@@ -1,1 +1,1 @@
-export { useUserSettings } from './useUserSettings';
+export { useUrlParams } from './useUrlParams';
