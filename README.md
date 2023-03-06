@@ -24,7 +24,7 @@ export const defaultBreakpointsMap: BreakpointsMapType = {
 };
 ```
 
-You can override
+You can override defaultBreakpointsMap with anything else
 
 ```tsx
 import { defaultBreakpointsMap as defMap } from 'use-breakpoint';
