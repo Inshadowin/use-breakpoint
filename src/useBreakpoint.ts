@@ -3,11 +3,11 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { getBreakpoint } from './getBreakpoint';
 import { compareBreakpoints } from './compareBreakpoints';
 import { defaultBreakpointsMap } from './compareBreakpoints';
-import type { Breakpoint, BreakpointsMapType } from './types';
+import type { BreakpointsMapType } from './types';
 
 export const useBreakpoints = <T extends string>(
   breakpointsMap: BreakpointsMapType<T>
-) => {
+): T => {
   const checkBreakpointRef = useRef(() => {
     return getBreakpoint(window.innerWidth, breakpointsMap);
   });
@@ -28,12 +28,12 @@ export const useBreakpoints = <T extends string>(
 };
 
 export const useBreakpoint = <T extends string>(
-  point: Breakpoint,
+  point: T,
   breakpointsMap?: BreakpointsMapType<T>
 ) => {
   const currentBp = useBreakpoints<T>(
     (defaultBreakpointsMap as BreakpointsMapType<T>) ?? breakpointsMap
   );
 
-  return compareBreakpoints(point, currentBp);
+  return compareBreakpoints<T>(point, currentBp);
 };

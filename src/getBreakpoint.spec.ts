@@ -30,7 +30,11 @@ describe('getBreakpoint', () => {
     expect(getBreakpoint(1535)).toBe('xl');
   });
 
-  it('should handle wrond order of breakpoints', () => {
+  it('should handle no overlap', () => {
+    expect(getBreakpoint(-10)).toBe('xs');
+  });
+
+  it('should handle wrong order of breakpoints', () => {
     expect(
       getBreakpoint(1535, { ...defaultBreakpointsMap, xl: 1280, xs: 0 })
     ).toBe('xl');
