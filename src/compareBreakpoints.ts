@@ -1,6 +1,6 @@
 import type { Breakpoint, BreakpointsMapType } from './types';
 
-export const defaultBreakpointsMap: BreakpointsMapType = {
+export const defaultBreakpointsMap: BreakpointsMapType<Breakpoint> = {
   xs: 0,
   sm: 640,
   md: 768,

@@ -4,8 +4,8 @@ import { compareBreakpoints } from './compareBreakpoints';
 import { defaultBreakpointsMap } from './compareBreakpoints';
 import type { Breakpoint, BreakpointsMapType } from './types';
 
-const getBreakpoint = (
-  breakpointsMap: BreakpointsMapType,
+const getBreakpoint = <T extends string>(
+  breakpointsMap: BreakpointsMapType<T>,
   width: number
 ): Breakpoint => {
   return (
@@ -19,7 +19,9 @@ const getBreakpoint = (
   );
 };
 
-export const useBreakpoints = (breakpointsMap: BreakpointsMapType) => {
+export const useBreakpoints = <T extends string>(
+  breakpointsMap: BreakpointsMapType<T>
+) => {
   const checkBreakpointRef = useRef(() => {
     return getBreakpoint(breakpointsMap, window.innerWidth);
   });
@@ -39,11 +41,13 @@ export const useBreakpoints = (breakpointsMap: BreakpointsMapType) => {
   return breakpoint;
 };
 
-export const useBreakpoint = (
+export const useBreakpoint = <T extends string>(
   point: Breakpoint,
-  breakpointsMap = defaultBreakpointsMap
+  breakpointsMap?: BreakpointsMapType<T>
 ) => {
-  const currentBp = useBreakpoints(breakpointsMap);
+  const currentBp = useBreakpoints<T>(
+    (defaultBreakpointsMap as BreakpointsMapType<T>) ?? breakpointsMap
+  );
 
   return compareBreakpoints(point, currentBp);
 };

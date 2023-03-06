@@ -8,6 +8,6 @@ export declare type Breakpoint =
   | '3xl'
   | '4xl';
 
-export type BreakpointsMapType = {
-  [x in Breakpoint]: number;
+export type BreakpointsMapType<T extends string = Breakpoint> = {
+  [x in T]: number;
 };

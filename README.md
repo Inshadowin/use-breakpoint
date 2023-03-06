@@ -5,6 +5,8 @@ Package that allows to easily work app breakpoints
 Example
 
 ```tsx
+import { useBreakpoint } from 'use-react-breakpoint';
+
 const showMenu = useBreakpoint('md') === 'fits';
 const showMobileMenu = useBreakpoint('md') === 'smaller';
 ```
@@ -27,7 +29,7 @@ export const defaultBreakpointsMap: BreakpointsMapType = {
 You can override defaultBreakpointsMap with anything else
 
 ```tsx
-import { defaultBreakpointsMap as defMap } from 'use-breakpoint';
+import { defaultBreakpointsMap as defMap } from 'use-react-breakpoint';
 
 const showMenu = useBreakpoint('md', { ...defMap, '5xl': 3400 }) === 'fits';
 ```
