@@ -1,7 +1,7 @@
 {
-  "name": "use-url-params",
+  "name": "use-breakpoint",
   "version": "1.0.1",
-  "description": "This is a package with use-url-params. Hook that implements useState-like behaviour working with local storage",
+  "description": "This is a package with use-breakpoint. It allows to get window's current breakpoint: xs, sm, md, etc.",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "style": "./src/style/index.css",
@@ -15,21 +15,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Inshadowin/use-url-params.git"
+    "url": "git+https://github.com/Inshadowin/use-breakpoint.git"
   },
   "author": "Antony Karachansky",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Inshadowin/use-url-params/issues"
+    "url": "https://github.com/Inshadowin/use-breakpoint/issues"
   },
-  "homepage": "https://github.com/Inshadowin/use-url-params#readme",
+  "homepage": "https://github.com/Inshadowin/use-breakpoint#readme",
   "keywords": [
     "react",
-    "use-url-paramsl",
-    "reactusersettings",
-    "usersettings",
-    "react user settings",
-    "user settings"
+    "use-breakpoint",
+    "use-breakpoints",
+    "breakpoints",
+    "md",
+    "lg",
+    "xl",
+    "2xl",
+    "responsive"
   ],
   "jest": {
     "roots": [
@@ -116,8 +119,5 @@
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3"
-  },
-  "dependencies": {
-    "lodash.isempty": "^4.4.0"
   }
 }
