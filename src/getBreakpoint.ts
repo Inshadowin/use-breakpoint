@@ -11,7 +11,8 @@ export const getBreakpoint = <T extends string>(
   Object.entries(breakpointsMap).forEach(([point, pointWidth]: [T, number]) => {
     if (
       resWidth === undefined ||
-      (width >= pointWidth && resWidth < pointWidth)
+      (width >= pointWidth && resWidth < pointWidth) ||
+      (width < pointWidth && resWidth >= pointWidth)
     ) {
       resWidth = pointWidth;
       resPoint = point;
