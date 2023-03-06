@@ -3,7 +3,7 @@ import { defaultBreakpointsMap } from './compareBreakpoints';
 
 describe('getBreakpoint', () => {
   it('should not break on negative px', () => {
-    expect(getBreakpoint(-1)).toBe('xs');
+    expect(getBreakpoint(-1)).toBe(undefined);
   });
 
   it('should not break on 0px', () => {
@@ -33,6 +33,12 @@ describe('getBreakpoint', () => {
   it('should handle no overlap + custom bp', () => {
     expect(
       getBreakpoint(-10, { ...defaultBreakpointsMap, aa: -5, xl: 1280 })
+    ).toBe(undefined);
+  });
+
+  it('should find overlap with custom bp', () => {
+    expect(
+      getBreakpoint(-10, { ...defaultBreakpointsMap, aa: -15, xl: 1280 })
     ).toBe('aa');
   });
 

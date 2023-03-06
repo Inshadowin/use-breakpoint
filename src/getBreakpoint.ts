@@ -5,19 +5,20 @@ export const getBreakpoint = <T extends string>(
   width: number,
   breakpointsMap: BreakpointsMapType<T> = defaultBreakpointsMap as BreakpointsMapType<T>
 ): T => {
-  let resPoint: T = undefined;
+  let nextBreakpoint: T | undefined = undefined;
+  const breakpoints = Object.keys(breakpointsMap) as T[];
 
-  Object.entries(breakpointsMap).forEach(([point, pointWidth]: [T, number]) => {
-    const resWidth = breakpointsMap[resPoint];
+  for (let i = 0; i < breakpoints.length; i++) {
+    const breakpoint = breakpoints[i];
+    const breakpointWidth = breakpointsMap[breakpoint];
 
     if (
-      resPoint === undefined ||
-      (width >= pointWidth && resWidth < pointWidth) ||
-      (width < pointWidth && resWidth >= pointWidth)
+      breakpointWidth <= width &&
+      (!nextBreakpoint || breakpointsMap[nextBreakpoint] < breakpointWidth)
     ) {
-      resPoint = point;
+      nextBreakpoint = breakpoint;
     }
-  });
+  }
 
-  return resPoint;
+  return nextBreakpoint;
 };
