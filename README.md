@@ -1,4 +1,4 @@
-# use-breakpoint
+# use-react-breakpoint
 
 Package that allows to easily work app breakpoints
 
