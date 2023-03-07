@@ -37,3 +37,10 @@ export const useBreakpoint = <T extends string>(
 
   return compareBreakpoints<T>(point, currentBp);
 };
+
+export const useBreakpointFits = <T extends string>(
+  point: T,
+  breakpointsMap?: BreakpointsMapType<T>
+) => {
+  return useBreakpoint(point, breakpointsMap) === 'fits';
+};

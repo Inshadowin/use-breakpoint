@@ -11,6 +11,15 @@ const showMenu = useBreakpoint('md') === 'fits';
 const showMobileMenu = useBreakpoint('md') === 'smaller';
 ```
 
+Or simpler version
+
+```tsx
+import { useBreakpointFits } from 'use-react-breakpoint';
+
+const showMenu = useBreakpointFits('md');
+const showMobileMenu = !useBreakpointFits('md');
+```
+
 Default Breakpoints
 
 ```ts
