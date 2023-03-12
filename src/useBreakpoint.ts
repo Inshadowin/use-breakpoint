@@ -5,8 +5,8 @@ import { compareBreakpoints } from './compareBreakpoints';
 import { defaultBreakpointsMap } from './compareBreakpoints';
 import type { BreakpointsMapType } from './types';
 
-export const useBreakpoints = <T extends string>(
-  breakpointsMap: BreakpointsMapType<T>
+export const useCurrentBreakpoint = <T extends string>(
+  breakpointsMap?: BreakpointsMapType<T>
 ): T => {
   const [, startTransition] = useTransition();
   const checkBreakpointRef = useRef(() => {
@@ -34,11 +34,11 @@ export const useBreakpoint = <T extends string>(
   point: T,
   breakpointsMap?: BreakpointsMapType<T>
 ) => {
-  const currentBp = useBreakpoints<T>(
+  const currentBp = useCurrentBreakpoint<T>(
     (defaultBreakpointsMap as BreakpointsMapType<T>) ?? breakpointsMap
   );
 
-  return compareBreakpoints<T>(point, currentBp);
+  return compareBreakpoints<T>(point, currentBp, breakpointsMap);
 };
 
 export const useBreakpointFits = <T extends string>(

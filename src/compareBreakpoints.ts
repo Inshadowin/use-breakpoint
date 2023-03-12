@@ -13,10 +13,11 @@ export const defaultBreakpointsMap: BreakpointsMapType<any> = {
 
 export const compareBreakpoints = <T extends string = Breakpoint>(
   compare: T,
-  current?: T
+  current?: T,
+  breakpointsMap = defaultBreakpointsMap
 ) => {
-  const currentSize = defaultBreakpointsMap[current];
-  const compareSize = defaultBreakpointsMap[compare];
+  const currentSize = breakpointsMap[current] ?? 0;
+  const compareSize = breakpointsMap[compare] ?? 0;
 
   return currentSize >= compareSize ? 'fits' : 'smaller';
 };
