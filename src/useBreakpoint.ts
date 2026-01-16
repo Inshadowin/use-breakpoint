@@ -1,11 +1,17 @@
-import { useLayoutEffect, useRef, useState, useTransition } from 'react';
+import {
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  useTransition,
+} from 'react';
 
 import { getBreakpoint } from './getBreakpoint';
 import { compareBreakpoints } from './compareBreakpoints';
 import { defaultBreakpointsMap } from './compareBreakpoints';
-import type { BreakpointsMapType } from './types';
+import type { Breakpoint, BreakpointsMapType } from './types';
 
-export const useCurrentBreakpoint = <T extends string>(
+export const useCurrentBreakpoint = <T extends string = Breakpoint>(
   breakpointsMap?: BreakpointsMapType<T>
 ): T => {
   const [, startTransition] = useTransition();
@@ -30,7 +36,7 @@ export const useCurrentBreakpoint = <T extends string>(
   return breakpoint;
 };
 
-export const useBreakpoint = <T extends string>(
+export const useBreakpoint = <T extends string = Breakpoint>(
   point: T,
   breakpointsMap?: BreakpointsMapType<T>
 ) => {
@@ -41,9 +47,22 @@ export const useBreakpoint = <T extends string>(
   return compareBreakpoints<T>(point, currentBp, breakpointsMap);
 };
 
-export const useBreakpointFits = <T extends string>(
+export const useBreakpointFits = <T extends string = Breakpoint>(
   point: T,
   breakpointsMap?: BreakpointsMapType<T>
 ) => {
   return useBreakpoint(point, breakpointsMap) === 'fits';
+};
+
+export const useBreakpointChecker = <T extends string = Breakpoint>(
+  breakpointsMap?: BreakpointsMapType<T>
+) => {
+  const current = useCurrentBreakpoint<T>(breakpointsMap);
+  const checker = useMemo(() => {
+    return new Proxy<{ [x in T]: boolean }>({} as any, {
+      get: (_target, key: T) => compareBreakpoints(key, current),
+    });
+  }, [current]);
+
+  return checker;
 };

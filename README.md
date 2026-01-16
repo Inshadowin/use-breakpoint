@@ -5,6 +5,20 @@ It provides couple of hooks to work with breakpoints
 
 ## Hooks
 
+## useBreakpointChecker
+
+Hook returns proxy-object that returns `boolean` when accessed by key. `true` - means breakpoint "fits".
+
+Example:
+
+```tsx
+import { useBreakpointChecker } from 'use-react-breakpoint';
+
+const checker = useBreakpointChecker();
+const isXl = checker.xl;
+const isMobile = !checker.sm;
+```
+
 ### useBreakpoint
 
 hook that accepts `breakpoint` name and returns `fits` or `smaller`
