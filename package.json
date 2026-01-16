@@ -1,6 +1,6 @@
 {
   "name": "use-react-breakpoint",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "This is a package with use-breakpoint. It allows to get window's current breakpoint: xs, sm, md, etc.",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",

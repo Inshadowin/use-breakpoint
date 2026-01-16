@@ -60,7 +60,7 @@ export const useBreakpointChecker = <T extends string = Breakpoint>(
   const current = useCurrentBreakpoint<T>(breakpointsMap);
   const checker = useMemo(() => {
     return new Proxy<{ [x in T]: boolean }>({} as any, {
-      get: (_target, key: T) => compareBreakpoints(key, current),
+      get: (_target, key: T) => compareBreakpoints(key, current) === 'fits',
     });
   }, [current]);
 
