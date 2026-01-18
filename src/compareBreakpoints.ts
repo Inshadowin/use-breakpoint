@@ -1,6 +1,6 @@
 import type { Breakpoint, BreakpointsMapType } from './types';
 
-export const defaultBreakpointsMap: BreakpointsMapType<any> = {
+export const defaultBreakpointsMap: BreakpointsMapType<Breakpoint> = {
   xs: 0,
   sm: 640,
   md: 768,
@@ -14,7 +14,7 @@ export const defaultBreakpointsMap: BreakpointsMapType<any> = {
 export const compareBreakpoints = <T extends string = Breakpoint>(
   compare: T,
   current?: T,
-  breakpointsMap = defaultBreakpointsMap
+  breakpointsMap = defaultBreakpointsMap as BreakpointsMapType<T>
 ) => {
   const currentSize = breakpointsMap[current] ?? 0;
   const compareSize = breakpointsMap[compare] ?? 0;
