@@ -11,7 +11,7 @@ export const defaultBreakpointsMap: BreakpointsMapType<Breakpoint> = {
   '4xl': 2560,
 };
 
-export const compareBreakpoints = <T extends string = Breakpoint>(
+export const compareBreakpoints = <T extends Breakpoint = Breakpoint>(
   compare: T,
   current?: T,
   breakpointsMap = defaultBreakpointsMap as BreakpointsMapType<T>
