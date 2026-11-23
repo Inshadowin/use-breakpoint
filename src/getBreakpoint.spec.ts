@@ -48,3 +48,14 @@ describe('getBreakpoint', () => {
     ).toBe('xl');
   });
 });
+
+describe('getBreakpoint happy path', () => {
+  it('returns the largest breakpoint that fits', () => {
+    expect(getBreakpoint(800, defaultBreakpointsMap)).toBe('md');
+    expect(getBreakpoint(1920, defaultBreakpointsMap)).toBe('3xl');
+  });
+
+  it('returns undefined below the smallest breakpoint', () => {
+    expect(getBreakpoint(-1, defaultBreakpointsMap)).toBeUndefined();
+  });
+});
